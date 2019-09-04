@@ -16,8 +16,10 @@ if __name__ == "__main__":
             # print(data)
             # print(type(data))
             print(data['id1'])
-            with open('test_charging_data3.csv', mode = 'w') as data_file:
-                data_writer = csv.writer(data_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
-                data_writer.writerow([str(time.time()), str(data['id1'])])
+            
+            
+        with open('test_charging_data3.csv', mode = 'w') as data_file:
+            data_writer = csv.writer(data_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
+            data_writer.writerow([str(time.time()), str(data['id1'])])
     
         
