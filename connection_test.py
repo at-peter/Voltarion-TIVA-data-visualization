@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
 
 
-    with open('test_charging_data_lunch.csv', mode = 'w') as data_file:
+    with open('current_sensor_calibration_march_5_channel1.csv', mode = 'w') as data_file:
         data_writer = csv.writer(data_file, delimiter=',', quotechar = '"', quoting=csv.QUOTE_MINIMAL)
         
         while 1:
@@ -25,7 +25,7 @@ if __name__ == "__main__":
                 # for key in keys:
                 #     print(data[key])
                 print('.')
-                data_writer.writerow([str(time.time()), data['id1'], data ['id83'], data['id87'], data['id90']])
+                data_writer.writerow([str(time.time()), data['id1'], data ['id4'], data['id5'], data['id7']])
                 time.sleep(1) 
 
 
@@ -33,18 +33,16 @@ if __name__ == "__main__":
             
 # TODO: Make a class for this so that I can just call it in server.py
             
-class Csv_logger ():
+# class Csv_logger ():
+    # def __init__(self):
+        # self.ip = '192.168.1.2'
+        # self.keys = []
 
+    # def _openConnection(self):
+        # pass
 
-    def __init__(self):
-    self.ip = '192.168.1.2'
-    self.keys = []
-
-    def _openConnection(self):
-
-
-    def _getData(self):
-
+    # def _getData(self):
+        # pass
 
             
             
