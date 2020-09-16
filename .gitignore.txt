@@ -1,0 +1,6 @@
+/dumb_excel
+/.idea
+/.vscode
+*.csv
+*.db
+*.lvm
