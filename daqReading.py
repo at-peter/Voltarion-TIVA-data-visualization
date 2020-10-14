@@ -1,24 +1,28 @@
 import nidaqmx
 import time
+import numpy as np 
+from nidaqmx.stream_readers import AnalogMultiChannelReader
+s = np.zeros([3])
 # ai7 is the photodiode sensor 
 with nidaqmx.Task() as task: 
     # setting up the voltage channels for 
     task.ai_channels.add_ai_voltage_chan("Dev2/ai7")
-    # task.ai_channels.add_ai_voltage_chan("Dev2/ai1")
-    # task.ai_channels.add_ai_voltage_chan("Dev2/ai2")
+    task.ai_channels.add_ai_voltage_chan("Dev2/ai1")
+    task.ai_channels.add_ai_voltage_chan("Dev2/ai2")
     # task.ai_channels.add_ai_voltage_chan("Dev2/ai3")
     # task.ai_channels.add_ai_voltage_chan("Dev2/ai4")
+    reader = AnalogMultiChannelReader(task)
     with nidaqmx.Task() as task2:
         volatage_array=[3,3] 
         task2.ao_channels.add_ao_voltage_chan("Dev2/ao0")
         task2.ao_channels.add_ao_voltage_chan("Dev2/ao1")
-        # task2.write(volatage_array, auto_start=True)
-        while 1:
-            s = task.read()
+        task2.write(volatage_array, auto_start=True)
+        for i in range(0,20):
+            x = reader.read_many_sample(s)
 
             print(s)
             time.sleep(1)
-        # task2.write([0,0], auto_start=True)
+        task2.write([0,0], auto_start=True)
 
 
 def start_sensor_task(sensors):
